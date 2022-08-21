@@ -23,7 +23,7 @@ const registerUserController = async (req, res) => {
         return okResponse({
             res,
             status: "success",
-            statusCode: 200,
+            statusCode: 201,
             message: "User registered successfully",
             data: {...user, accessToken}
         })
@@ -67,7 +67,7 @@ const LoginUserController = async(req, res) => {
         return errorResponse({
             res,
             status: "fail",
-            message: "Error occurred while registering user",
+            message: "Error occurred while processing request",
         })
     }
 }

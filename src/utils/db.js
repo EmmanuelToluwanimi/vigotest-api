@@ -14,12 +14,24 @@ let createUserTable = `CREATE TABLE IF NOT EXISTS users
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )`;
 
+let createPostTable = `CREATE TABLE IF NOT EXISTS posts
+(   id INT AUTO_INCREMENT PRIMARY KEY,
+    user_id INT NOT NULL,
+    imgUrl VARCHAR(255) NOT NULL,
+    description TEXT,
+    allow_giftbag BOOLEAN NOT NULL DEFAULT ${true},
+    allow_comment BOOLEAN NOT NULL DEFAULT ${true},
+    hide_likes BOOLEAN NOT NULL DEFAULT ${false},
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)`;
+
 pool.query(createDatabase, (err, results) => {
     if (err) {
         console.log(err);
     } else {
         console.log('Database connected successfully');
         pool.query(createUserTable);
+        pool.query(createPostTable);
     }
 })
 
