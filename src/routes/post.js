@@ -30,7 +30,7 @@ router.get(ID, decodeToken, validatePostQuery, getSinglePostController);
 router.post(COMMENT, decodeToken, validateCommentInput, createCommentController);
 router.get(USERCOMMENT, decodeToken, getCommentController);
 router.post(LIKE, decodeToken, likePostController);
-router.get(UNLIKE, decodeToken, unLikePostController);
+router.delete(UNLIKE, decodeToken, unLikePostController);
 router.get(LIKE, decodeToken, getPostLikesController);
 router.get(USERPOST, decodeToken, validatePostQuery, getAllUserPostsController);
 
