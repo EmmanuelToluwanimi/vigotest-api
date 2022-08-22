@@ -5,12 +5,14 @@ const {
     getSinglePost,
 } = require("../service/post.service");
 const { errorResponse, okResponse } = require("../utils/constants");
-
+const {uploadFile} = require("../service/upload.service");
 
 const createPostController = async (req, res) => {
     try {
         const user_id = req.user.id;
-        await createPost({...req.body, user_id});
+        const filename = await uploadFile(req.file);
+        await createPost({...req.body, user_id, imgUrl: filename});
+        
         return okResponse({
             res,
             status: "success",

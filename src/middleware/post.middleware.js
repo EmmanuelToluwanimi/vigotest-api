@@ -1,5 +1,6 @@
 const createPostSchema = require("../schema/post.schema");
 const { errorResponse, formatJoiMessage } = require("../utils/constants");
+const multer = require("multer");
 
 const validatePostInput = (req, res, next) => {
   const { error } = createPostSchema.validate(req.body);
@@ -32,17 +33,8 @@ const validatePostQuery = (req, res, next) => {
   next();
 };
 
-// const generateRandomeNumber = () => {
-//   return Math.floor(Math.random() * 1000000).toString();
-// };
+const storage = multer.memoryStorage()
+const uploadImage = multer({ storage: storage });
 
-// const storage = multer.diskStorage({
-//   destination: "./uploads",
-//   filename: (req, file, cb) => {
-//     cb(null, generateRandomeNumber()+file.originalname);
-//   },
-// });
 
-// const uploadImage = multer({ storage: storage });
-
-module.exports = { validatePostInput, validatePostQuery };
+module.exports = { validatePostInput, validatePostQuery, uploadImage };

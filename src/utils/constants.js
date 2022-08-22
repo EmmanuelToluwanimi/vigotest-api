@@ -69,6 +69,10 @@ function okResponse({ res, message, data, status, statusCode = 200 }) {
     res.status(statusCode).json({ status, message, ...(data && { data }) });
 }
 
+const generateRandomNumber = () => {
+    return Math.floor(Math.random() * 1000000).toString();
+  };
+
 module.exports = {
     PORT,
     ROUTES,
@@ -85,4 +89,5 @@ module.exports = {
     generateUid,
     hashPassword,
     comparePassword,
+    generateRandomNumber
 };

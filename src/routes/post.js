@@ -7,13 +7,13 @@ const {
 } = require("../controller/post.controller");
 const { ROUTES } = require("../utils/constants");
 const { decodeToken } = require("../middleware/user.middleware");
-const {validatePostInput, validatePostQuery} = require("../middleware/post.middleware");
+const {validatePostInput, validatePostQuery, uploadImage} = require("../middleware/post.middleware");
 
 const router = Router();
 const { INDEX, ID, USERPOST } = ROUTES;
 
 router.get(INDEX, decodeToken, getAllPostsController);
-router.post(INDEX, decodeToken, validatePostInput, createPostController);
+router.post(INDEX, decodeToken, uploadImage.single('imgUrl'), validatePostInput, createPostController);
 router.get(ID, decodeToken, validatePostQuery, getSinglePostController);
 router.get(USERPOST, decodeToken, validatePostQuery, getAllUserPostsController);
 

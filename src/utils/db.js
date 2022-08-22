@@ -20,7 +20,7 @@ let createPostTable = `CREATE TABLE IF NOT EXISTS posts
     imgUrl VARCHAR(255) NOT NULL,
     description TEXT,
     allow_giftbag BOOLEAN NOT NULL DEFAULT ${true},
-    allow_comment BOOLEAN NOT NULL DEFAULT ${true},
+    allow_comments BOOLEAN NOT NULL DEFAULT ${true},
     hide_likes BOOLEAN NOT NULL DEFAULT ${false},
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )`;

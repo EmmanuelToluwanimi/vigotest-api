@@ -5,9 +5,9 @@ class Post {
         this.imgUrl = imgUrl;
         this.description = description;
         this.user_id = user_id;
-        this.allow_comments = allow_comments;
-        this.allow_giftbag = allow_giftbag;
-        this.hide_likes = hide_likes;
+        this.allow_comments = (allow_comments === 'true');
+        this.allow_giftbag = (allow_giftbag === 'true');
+        this.hide_likes = (hide_likes === 'true');
     }
 
     static async getAll() {

@@ -1,7 +1,7 @@
 const Joi = require("joi");
 
 const createPostSchema = Joi.object({
-    imgUrl: Joi.string().required(),
+    imgUrl: Joi.any(),
     description: Joi.string().allow(""),
     allow_giftbag: Joi.boolean().required(),
     allow_comments: Joi.boolean().required(),
