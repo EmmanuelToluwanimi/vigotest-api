@@ -8,7 +8,7 @@ const createComment = async (data) => {
     }
 }
 
-const getComments = async () => {
+const getAllComments = async () => {
     try {
         return await fetchComments();
     } catch (error) {
@@ -26,6 +26,6 @@ const getComment = async (id) => {
 
 module.exports = {
     createComment,
-    getComments,
+    getAllComments,
     getComment,
 }

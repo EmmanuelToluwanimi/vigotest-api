@@ -17,7 +17,7 @@ const s3Client = new S3Client({
 
 const uploadFile = async (file) => {
     try {
-        const filename = generateRandomNumber()+file.originalname;
+        const filename = generateRandomNumber()+file.originalname.trim();
         
         const params = {
             Bucket: bucketName,
