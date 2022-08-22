@@ -11,7 +11,7 @@ class Post {
     }
 
     static async getAll() {
-        var s = "SELECT * FROM posts INNER JOIN users ON posts.user_id = users.id"
+        var s = "SELECT posts.id, posts.imgUrl, posts.description, posts.user_id, posts.allow_giftbag, posts.allow_comments, posts.hide_likes, users.fullname FROM posts INNER JOIN users ON posts.user_id = users.id"
         const [rows] = await db.execute(s);
         return rows;
     }
