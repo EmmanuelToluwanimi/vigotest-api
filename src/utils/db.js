@@ -25,6 +25,21 @@ let createPostTable = `CREATE TABLE IF NOT EXISTS posts
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )`;
 
+let createCommentTable = `CREATE TABLE IF NOT EXISTS comments
+(   id INT AUTO_INCREMENT PRIMARY KEY,
+    post_id INT NOT NULL,
+    user_id INT NOT NULL,
+    comment TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)`;
+
+let createLikeTable = `CREATE TABLE IF NOT EXISTS likes
+(   id INT AUTO_INCREMENT PRIMARY KEY,
+    post_id INT NOT NULL,
+    user_id INT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)`;
+
 pool.query(createDatabase, (err, results) => {
     if (err) {
         console.log(err);
@@ -32,6 +47,8 @@ pool.query(createDatabase, (err, results) => {
         console.log('Database connected successfully');
         pool.query(createUserTable);
         pool.query(createPostTable);
+        pool.query(createCommentTable);
+        pool.query(createLikeTable);
     }
 })
 

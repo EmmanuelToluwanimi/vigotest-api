@@ -1,6 +1,7 @@
 const createPostSchema = require("../schema/post.schema");
 const { errorResponse, formatJoiMessage } = require("../utils/constants");
 const multer = require("multer");
+const commentSchema = require("../schema/comment.schema");
 
 const validatePostInput = (req, res, next) => {
   const { error } = createPostSchema.validate(req.body);
@@ -36,5 +37,21 @@ const validatePostQuery = (req, res, next) => {
 const storage = multer.memoryStorage()
 const uploadImage = multer({ storage: storage });
 
+const validateCommentInput = (req, res, next) => {
+  const { error } = commentSchema.validate(req.body);
+  if (error?.message) {
+    const message = formatJoiMessage(error.message);
+    console.log(error?.message || error);
+    return errorResponse({
+      res,
+      statusCode: 422,
+      status: "fail",
+      message,
+    });
+  }
 
-module.exports = { validatePostInput, validatePostQuery, uploadImage };
+  next();
+}
+
+
+module.exports = { validatePostInput, validatePostQuery, uploadImage, validateCommentInput };
