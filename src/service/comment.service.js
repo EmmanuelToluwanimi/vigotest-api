@@ -1,4 +1,4 @@
-const { storeComment, fetchComments, findCommentById } = require("../repo/comment.repo");
+const { storeComment, fetchComments, findCommentById, fetchCommentByPostId } = require("../repo/comment.repo");
 
 const createComment = async (data) => {
     try {
@@ -24,8 +24,17 @@ const getComment = async (id) => {
     }
 }
 
+const getPostComments = async (id) => {
+    try {
+        return await fetchCommentByPostId(id);
+    } catch (error) {
+        throw error
+    }
+}
+
 module.exports = {
     createComment,
     getAllComments,
     getComment,
+    getPostComments
 }

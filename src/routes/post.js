@@ -22,13 +22,13 @@ const { decodeToken } = require("../middleware/user.middleware");
 const {validatePostInput, validatePostQuery, uploadImage, validateCommentInput} = require("../middleware/post.middleware");
 
 const router = Router();
-const { INDEX, ID, COMMENT, USERPOST, LIKE, UNLIKE, USERCOMMENT } = ROUTES;
+const { INDEX, ID, COMMENT, USERPOST, LIKE, UNLIKE, POSTCOMMENT } = ROUTES;
 
 router.get(INDEX, decodeToken, getAllPostsController);
 router.post(INDEX, decodeToken, uploadImage.single('imgUrl'), validatePostInput, createPostController);
 router.get(ID, decodeToken, validatePostQuery, getSinglePostController);
 router.post(COMMENT, decodeToken, validateCommentInput, createCommentController);
-router.get(USERCOMMENT, decodeToken, getCommentController);
+router.get(POSTCOMMENT, decodeToken, getCommentController);
 router.post(LIKE, decodeToken, likePostController);
 router.delete(UNLIKE, decodeToken, unLikePostController);
 router.get(LIKE, decodeToken, getPostLikesController);

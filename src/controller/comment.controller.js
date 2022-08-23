@@ -1,4 +1,4 @@
-const { createComment, getComment, getAllComments } = require("../service/comment.service");
+const { createComment, getComment, getAllComments, getPostComments } = require("../service/comment.service");
 const { errorResponse, okResponse } = require("../utils/constants");
 
 const createCommentController = async (req, res) => {
@@ -33,7 +33,7 @@ const createCommentController = async (req, res) => {
 const getCommentController = async (req, res) => {
     try {
         const { id } = req.params;
-        const result = await getComment(id);
+        const result = await getPostComments(id);
         if (result?.message) {
             return errorResponse({
                 res,
@@ -48,7 +48,10 @@ const getCommentController = async (req, res) => {
             status: "success",
             statusCode: 200,
             message: "Successful request",
-            data: result,
+            data: {
+                total_comments: result.length,
+                comments: result
+            },
         });
     } catch (error) {
         console.log(error?.message || error);

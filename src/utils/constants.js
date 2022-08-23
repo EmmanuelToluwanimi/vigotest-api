@@ -27,7 +27,7 @@ const ROUTES = {
     REGISTER: "/signup",
     LIKE: "/:id/like",
     UNLIKE: "/:id/unlike",
-    USERCOMMENT: "/:id/comments",
+    POSTCOMMENT: "/:id/comments",
     COMMENT: "/comments",
     USERPOST: "/:id/user",
     ID: "/:id",

@@ -18,7 +18,15 @@ class Comment {
     }
     
     static async getByPostId(post_id) {
-        const [rows] = await db.execute('SELECT * FROM comments WHERE post_id = ?', [post_id]);
+
+        var query = `
+            SELECT post_id, comments.user_id, comment, users.fullname, users.email, comments.created_at
+            FROM comments
+            JOIN users ON comments.user_id = users.id
+            WHERE comments.post_id = ?;
+        `;
+
+        const [rows] = await db.execute(query, [post_id]);
         return rows;
     }
     

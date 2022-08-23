@@ -27,8 +27,18 @@ const findCommentById = async (id) => {
     }
 }
 
+const fetchCommentByPostId = async(id) => {
+    try {
+        const comment = await Comment.getByPostId(id);
+        return comment;
+    } catch (error) {
+        throw error
+    }
+}
+
 module.exports = {
     storeComment,
     fetchComments,
     findCommentById,
+    fetchCommentByPostId
 }
