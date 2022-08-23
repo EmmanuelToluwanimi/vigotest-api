@@ -17,7 +17,14 @@ class Like {
     }
     
     static async getByPostId(post_id) {
-        const [rows] = await db.execute('SELECT * FROM likes WHERE post_id = ?', [post_id]);
+        var query = `
+            SELECT post_id, likes.user_id, users.fullname, users.email
+            FROM likes
+            JOIN users ON likes.user_id = users.id
+            WHERE likes.post_id = ?;
+        `;
+
+        const [rows] = await db.execute(query, [post_id]);
         return rows;
     }
     

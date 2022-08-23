@@ -69,7 +69,8 @@ const getPostLikesController = async (req, res)=> {
             statusCode: 200,
             message: "Successful request",
             data: {
-                likesCount: posts.length
+                total_likes: posts.length,
+                posts
             }
         })
     } catch (error) {
