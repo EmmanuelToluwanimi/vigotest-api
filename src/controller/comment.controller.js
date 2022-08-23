@@ -3,7 +3,9 @@ const { errorResponse, okResponse } = require("../utils/constants");
 
 const createCommentController = async (req, res) => {
     try {
-        const { post_id, user_id, comment } = req.body;
+        const {id: post_id} = req.params;
+        const {id: user_id} = req.user;
+        const { comment } = req.body;
         const result = await createComment({ post_id, user_id, comment });
         if (result?.message) {
             return errorResponse({

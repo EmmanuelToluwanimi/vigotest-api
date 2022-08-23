@@ -27,7 +27,7 @@ const { INDEX, ID, COMMENT, USERPOST, LIKE, UNLIKE, POSTCOMMENT } = ROUTES;
 router.get(INDEX, decodeToken, getAllPostsController);
 router.post(INDEX, decodeToken, uploadImage.single('imgUrl'), validatePostInput, createPostController);
 router.get(ID, decodeToken, validatePostQuery, getSinglePostController);
-router.post(COMMENT, decodeToken, validateCommentInput, createCommentController);
+router.post(POSTCOMMENT, decodeToken, validateCommentInput, createCommentController);
 router.get(POSTCOMMENT, decodeToken, getCommentController);
 router.post(LIKE, decodeToken, likePostController);
 router.delete(UNLIKE, decodeToken, unLikePostController);

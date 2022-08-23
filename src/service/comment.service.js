@@ -1,7 +1,16 @@
 const { storeComment, fetchComments, findCommentById, fetchCommentByPostId } = require("../repo/comment.repo");
+const { findPostById } = require("../repo/post.repo");
+
 
 const createComment = async (data) => {
     try {
+        const post = await findPostById(data.post_id);
+        if (!post) {
+            return {
+                statusCode: 404,
+                message: "Oops, post is not available"
+            }
+        }
         return await storeComment(data);
     } catch (error) {
         throw error
