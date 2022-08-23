@@ -21,7 +21,8 @@ The project contains api endpoints for the following operations:
 8. Get likes of a post : `GET /api/posts/:id/likes`
 9. Unlike a post : `DELETE /api/posts/:id/unlike`
 10. Get all user posts : `GET /api/posts/:id/user`
-11. Comment on a post : `POST /api/posts/comments` - `{post_id, user_id, comment}`
+11. Comment on a post : `POST /api/posts/:id/comments` - `{ comment }`
+12. Get post comments : `GET /api/posts/:id/comments`
     
 The project is still in progress. Feel free to test.
 Thank you.
