@@ -41,7 +41,18 @@ class Post {
     }
     
     static async getByUserId(user_id) {
-        const [rows] = await db.execute('SELECT * FROM posts WHERE user_id = ?', [user_id]);
+
+        var query = `
+            SELECT posts.id, imgUrl, description, posts.user_id, allow_comments, allow_giftbag, hide_likes, users.fullname, users.email, posts.created_at,
+            (SELECT COUNT(post_id) FROM likes WHERE likes.post_id = posts.id) AS total_likes,
+            (SELECT COUNT(post_id) FROM comments WHERE comments.post_id = posts.id) AS total_comments
+            FROM posts
+            JOIN users 
+            ON posts.user_id = users.id
+            WHERE posts.user_id = ?
+        `;
+
+        const [rows] = await db.execute(query, [user_id]);
         return rows;
     }
     
