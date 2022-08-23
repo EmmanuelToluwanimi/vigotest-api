@@ -11,8 +11,16 @@ class Post {
     }
 
     static async getAll() {
-        var s = "SELECT po.id, po.imgUrl, po.description, po.user_id, po.allow_giftbag, po.allow_comments, po.hide_likes, users.fullname FROM posts AS po INNER JOIN users ON po.user_id = users.id"
-        const [rows] = await db.execute(s);
+        var query = `
+            SELECT posts.id, imgUrl, description, posts.user_id, allow_comments, allow_giftbag, hide_likes, users.fullname, users.email, posts.created_at,
+            (SELECT COUNT(post_id) FROM likes WHERE likes.post_id = posts.id) AS total_likes,
+            (SELECT COUNT(post_id) FROM comments WHERE comments.post_id = posts.id) AS total_comments
+            FROM posts
+            JOIN users 
+            ON posts.user_id = users.id
+        `;
+
+        const [rows] = await db.execute(query);
         return rows;
     }
     
