@@ -35,6 +35,13 @@ const getComment = async (id) => {
 
 const getPostComments = async (id) => {
     try {
+        const post = await findPostById(id);
+        if (!post) {
+            return {
+                statusCode: 404,
+                message: "Oops, post is not available"
+            }
+        }
         return await fetchCommentByPostId(id);
     } catch (error) {
         throw error
