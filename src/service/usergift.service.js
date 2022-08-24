@@ -49,7 +49,7 @@ const createUserGift = async (data, user) => {
         }
 
         await shareFunds(user, receiver, total_amount)
-        await storeUserGift({...data, quantity: qty});
+        await storeUserGift({...data, quantity: qty, amount: gift.amount});
         await storeTransaction(newTransaction);
 
     } catch (error) {
