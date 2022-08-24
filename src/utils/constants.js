@@ -23,8 +23,11 @@ const ROUTES = {
     AUTH: "/api/auth",
     USER: "/api/user",
     POST: "/api/posts",
+    SYSTEM: "/api/system",
     LOGIN: "/login",
     REGISTER: "/signup",
+    GIFT: "/gift",
+    TRANSACTION: "/transaction",
     LIKE: "/:id/like",
     UNLIKE: "/:id/unlike",
     POSTCOMMENT: "/:id/comments",
@@ -33,6 +36,8 @@ const ROUTES = {
     ID: "/:id",
     INDEX: "/",
 };
+
+const currencies = ["usd", "euro", "naira"]
 
 const formatJoiMessage = (message) => {
     return message.replace('"', "").replace('"', "");
@@ -77,6 +82,7 @@ module.exports = {
     secretKey,
     algoType,
     dbConfig,
+    currencies,
     accessTokenTtl,
     refreshTokenTtl,
     saltRounds,

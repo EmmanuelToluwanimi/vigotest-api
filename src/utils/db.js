@@ -40,6 +40,43 @@ let createLikeTable = `CREATE TABLE IF NOT EXISTS likes
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 )`;
 
+let createGiftsTable = `
+    CREATE TABLE IF NOT EXISTS gifts
+    (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        name VARCHAR(255) NOT NULL,
+        amount INT NOT NULL,
+        imgUrl VARCHAR(255) NOT NULL,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    )
+`;
+
+let createUserGiftsTable = `
+    CREATE TABLE IF NOT EXISTS user-gifts
+    (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        user_id INT NOT NULL,
+        gift_id INT NOT NULL,
+        sender_id INT NOT NULL,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    )
+`;
+
+let createTransactionsTable = `
+    CREATE TABLE IF NOT EXISTS transactions
+    (
+        id INT AUTO_INCREMENT PRIMARY KEY,
+        sender_id INT NOT NULL,
+        receiver_id INT NOT NULL,
+        gift_id INT NOT NULL,
+        type VARCHAR(255) NOT NULL,
+        status VARCHAR(255) NOT NULL,
+        description VARCHAR(255) NOT NULL,
+        amount INT NOT NULL,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    )
+`;
+
 pool.query(createDatabase, (err, results) => {
     if (err) {
         console.log(err);
@@ -49,6 +86,10 @@ pool.query(createDatabase, (err, results) => {
         pool.query(createPostTable);
         pool.query(createCommentTable);
         pool.query(createLikeTable);
+        pool.query(createGiftsTable);
+        pool.query(createUserGiftsTable);
+        pool.query(createTransactionsTable);
+
     }
 })
 
