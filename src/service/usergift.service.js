@@ -71,6 +71,9 @@ const shareFunds = async (user, receiver, amount) => {
         const _useramount = user.wallet - amount;
         const _receiveramount = receiver.wallet + amount;
 
+        console.log("Receiver_",_receiveramount)
+        console.log("senderrrr",_useramount)
+
         await updateUserWallet(_useramount, user.id);
         await updateUserWallet(_receiveramount, receiver.id);
 
