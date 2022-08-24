@@ -41,9 +41,18 @@ const findUserByEmail = async (email) => {
     }
 }
 
+const updateUserWallet = async (amount, id) => {
+    try {
+        await User.updateWallet(amount, id);
+    } catch (error) {
+        throw error;
+    }
+}
+
 module.exports = {
     createUser,
     getUsers,
     findUserById,
     findUserByEmail,
+    updateUserWallet
 }

@@ -22,6 +22,11 @@ class User {
         return rows[0];
     }
 
+    static async updateWallet(amount, id) {
+        const [rows] = await db.execute('UPDATE users SET wallet = ? WHERE id = ?', [amount, id]);
+        return rows[0];
+    }
+
     async save() {
         const [rows] = await db.execute('INSERT INTO users (fullname, email, password) VALUES (?, ?, ?)', [this.fullname, this.email, this.password]);
         return rows.insertId;

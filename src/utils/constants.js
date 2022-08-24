@@ -26,8 +26,8 @@ const ROUTES = {
     SYSTEM: "/api/system",
     LOGIN: "/login",
     REGISTER: "/signup",
-    GIFT: "/gift",
-    TRANSACTION: "/transaction",
+    GIFT: "/gifts",
+    TRANSACTION: "/transactions",
     LIKE: "/:id/like",
     UNLIKE: "/:id/unlike",
     POSTCOMMENT: "/:id/comments",
@@ -54,6 +54,10 @@ const hashPassword = async (password) => {
 
 const comparePassword = async (password, hash) => {
     return await bcrypt.compare(password, hash);
+}
+
+const formatNumber = (value)=>{
+    return Number(value)
 }
 
 /**
@@ -83,6 +87,7 @@ module.exports = {
     algoType,
     dbConfig,
     currencies,
+    formatNumber,
     accessTokenTtl,
     refreshTokenTtl,
     saltRounds,

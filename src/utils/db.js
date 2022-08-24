@@ -55,9 +55,11 @@ let createUserGiftsTable = `
     CREATE TABLE IF NOT EXISTS user-gifts
     (
         id INT AUTO_INCREMENT PRIMARY KEY,
-        user_id INT NOT NULL,
-        gift_id INT NOT NULL,
         sender_id INT NOT NULL,
+        gift_id INT NOT NULL,
+        receiver_id INT NOT NULL,
+        quantity INT NOT NULL,
+        currency VARCHAR(255) NOT NULL,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     )
 `;
@@ -69,10 +71,11 @@ let createTransactionsTable = `
         sender_id INT NOT NULL,
         receiver_id INT NOT NULL,
         gift_id INT NOT NULL,
-        type VARCHAR(255) NOT NULL,
         status VARCHAR(255) NOT NULL,
         description VARCHAR(255) NOT NULL,
         amount INT NOT NULL,
+        quantity INT NOT NULL,
+        currency VARCHAR(255) NOT NULL,
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
     )
 `;
