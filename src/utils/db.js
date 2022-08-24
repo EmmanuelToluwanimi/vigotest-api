@@ -52,7 +52,7 @@ let createGiftsTable = `
 `;
 
 let createUserGiftsTable = `
-    CREATE TABLE IF NOT EXISTS user-gifts
+    CREATE TABLE IF NOT EXISTS usergifts
     (
         id INT AUTO_INCREMENT PRIMARY KEY,
         sender_id INT NOT NULL,
