@@ -11,9 +11,9 @@ const { ROUTES } = require("../utils/constants");
 const router = Router();
 const { GIFT, ID } = ROUTES;
 
-router.get(GIFT, decodeToken, createGiftController);
+router.get(GIFT, decodeToken, getAllGiftsController);
 router.get(GIFT + ID, decodeToken, getSingleGiftController);
-router.post(GIFT, decodeToken, getAllGiftsController);
+router.post(GIFT, decodeToken, createGiftController);
 
 
 module.exports = router;
