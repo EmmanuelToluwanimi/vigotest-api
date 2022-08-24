@@ -68,8 +68,8 @@ const getAllUserGifts = async (id) => {
 
 const shareFunds = async (user, receiver, amount) => {
     try {
-        const _useramount = user.amount - amount;
-        const _receiveramount = receiver.amount + amount;
+        const _useramount = user.wallet - amount;
+        const _receiveramount = receiver.wallet + amount;
 
         await updateUserWallet(_useramount, user.id);
         await updateUserWallet(_receiveramount, receiver.id);
