@@ -26,7 +26,7 @@ class User_gift {
 
     static async getByReceiverId(id) {
         var query = `
-            SELECT usergifts.*, users.fullname, gifts.name, gifts.imgUrl, (gifts.amount * quantity) 
+            SELECT usergifts.*, users.fullname, gifts.name, gifts.imgUrl, (gifts.amount * quantity) AS amount
             FROM usergifts 
             JOIN users 
             ON usergifts.sender_id = users.id
