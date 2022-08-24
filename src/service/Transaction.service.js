@@ -10,7 +10,7 @@ const getAllUserTransactions = async (id)=> {
         let _some = [];
         _some  = transactions.map((t)=> t = {
             ...t,
-            type: t.sender_id === user_id ? "debit" : "credit"
+            type: t.sender_id === id ? "debit" : "credit"
         })
 
         return {
