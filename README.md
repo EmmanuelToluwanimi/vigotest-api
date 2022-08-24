@@ -7,7 +7,7 @@ You can try to clone.
 or test with endpoint url.
 
 ## Url
-Base Url: `https://vigoapi.herokuapp.com`
+Base Url: `https://vigotest.herokuapp.com/`
 
 ## Endpoints
 The project contains api endpoints for the following operations:
