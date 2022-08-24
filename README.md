@@ -23,6 +23,8 @@ The project contains api endpoints for the following operations:
 10. Get all user posts : `GET /api/posts/:id/user`
 11. Comment on a post : `POST /api/posts/:id/comments` - `{ comment }`
 12. Get post comments : `GET /api/posts/:id/comments`
+13. Get all gifts: `GET /api/system/gift`
+14. Get single gift : `GET /api/system/gift/:id`
     
 The project is still in progress. Feel free to test.
 Thank you.
