@@ -33,7 +33,27 @@ class Transaction {
     }
 
     static async getByUserId(id) {
-        const [rows] = await db.execute('SELECT * FROM transactions WHERE receiver_id = ? OR sender_id = ?', [id]);
+        var query = `
+            SELECT transactions.id, (gifts.name) AS description, transactions.status, transactions.sender_id,transactions.receiver_id, 
+            (
+                SELECT users.fullname
+                FROM users
+                WHERE transactions.sender_id = users.id
+            ) AS sender,
+            (
+                SELECT users.fullname
+                FROM users
+                WHERE transactions.receiver_id = users.id
+            ) AS receiver,
+            transactions.created_at
+            FROM transactions
+            JOIN gifts
+            ON transactions.gift_id = gifts.id
+            WHERE transactions.sender_id = ?
+            OR
+            transactions.receiver_id = ?;
+        `;
+        const [rows] = await db.execute(query, [id]);
         return rows;
     }
     
