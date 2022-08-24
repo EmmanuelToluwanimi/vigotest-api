@@ -11,7 +11,7 @@ const createGift = async (data)=> {
 
 const getAllGifts = async ()=> {
     try {
-        const gifts = await findAllGifts(data);
+        const gifts = await findAllGifts();
         return {
             gifts
         }
