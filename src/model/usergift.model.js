@@ -25,7 +25,16 @@ class User_gift {
     }
 
     static async getByReceiverId(id) {
-        const [rows] = await db.execute('SELECT * FROM usergifts WHERE receiver_id = ?', [id]);
+        var query = `
+            SELECT usergifts.*, users.fullname, gifts.name, gifts.imgUrl, (gifts.amount * quantity) 
+            FROM usergifts 
+            JOIN users 
+            ON usergifts.sender_id = users.id
+            JOIN gifts
+            ON usergifts.gift_id = gifts.id
+            WHERE receiver_id = ?
+        `;
+        const [rows] = await db.execute(query, [id]);
         return rows;
     }
 
