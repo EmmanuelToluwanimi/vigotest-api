@@ -35,7 +35,7 @@ class Transaction {
             ON transactions.gift_id = gifts.id
             WHERE transactions.id = ?
         `;
-        const [rows] = await db.execute('SELECT * FROM transactions WHERE id = ?', [id]);
+        const [rows] = await db.execute(query, [id]);
         return rows[0];
     }
 
