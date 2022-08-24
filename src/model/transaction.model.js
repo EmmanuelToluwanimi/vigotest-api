@@ -69,7 +69,7 @@ class Transaction {
             OR
             transactions.receiver_id = ?
         `;
-        const [rows] = await db.execute(query, [id]);
+        const [rows] = await db.execute(query, [id, id]);
         return rows;
     }
     
