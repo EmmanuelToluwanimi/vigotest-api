@@ -67,7 +67,7 @@ class Transaction {
             ON transactions.gift_id = gifts.id
             WHERE transactions.sender_id = ?
             OR
-            transactions.receiver_id = ?;
+            transactions.receiver_id = ?
         `;
         const [rows] = await db.execute(query, [id]);
         return rows;
