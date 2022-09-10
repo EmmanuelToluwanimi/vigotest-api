@@ -12,7 +12,7 @@ Base Url: `https://vigotest.herokuapp.com/`
 ## Endpoints
 The project contains api endpoints for the following operations:
 1. Check if the server is running : `GET /api/healthcheck`}`
-2. Add a new user : `POST /api/auth/signup` - `{fullname, email, password
+2. Add a new user : `POST /api/auth/signup` - `{fullname, email, password}`
 3. Login a user : `POST /api/auth/login` - `{email, password}`
 4. Create post with formdata : `POST /api/posts` - `{imgUrl: file, description, allow_comments: bool, allow_giftbag: bool, hide_likes: bool}`
 5. Get all posts : `GET /api/posts`
